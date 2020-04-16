@@ -1,0 +1,64 @@
+\section {Nash Equilibrium}
+
+\subsection{Definition}
+It is a stable state of a game involving the interaction of different participants, in which no participant can gain by a unilateral change of strategy if the strategies of the others remain unchanged. \\
+
+\begin{flushleft}\textit{Nash Equilibrium} of a game $G$ in strategic form is defined as any outcome $(s^*_1, \dots , s^*_n)$ such that \end{flushleft}$$u_i(s^*_i, s^*_{-i}) \geq u_i(s_i, s^*_{-i})\hspace{0.3cm} \forall s_i \in S_i$$ holds for each player $i$. The set of all Nash equilibria of $G$ is denoted by $N(G)$.
+
+\subsection{Best Response}
+We define the \textit{Best Response correspondence}\footnote{By definition, a \textit{correspondence} $f$ from $A$ to $B$ assigns to each $x \in A$ a \textit{subset} of $B$, and hence we write $f: A \rightrightarrows B$} of a player $i$ in a strategic form game as the correspondence$B_i : S_{-i} \rightrightarrows S_i$ given by $$B_i(s_{-i}) = \{s_i \in s_i: u_i(s_i, s_{-i}) \geq u_i(b_i, s_{-i})\hspace{0.2cm} \forall b_i \in S_i\} $$
+
+\subsection{Pure Strategy Nash Equilibrium}
+Given a normal form game $\mathcal{T} = \langle \mathcal{N}, (S_i)_{i \in N}, (u_i)_{i \in N}\rangle$, the action profile $S^* = (s^*_1, \dots , s^*_n)$ is called a \textit{pure strategy Nash Equilibrium of $\mathcal{T}$ if} $\forall i, s^*_i$ belongs to the set of \textit{best response } of $s^*_{-i}$.
+
+\begin{flushleft}In words, we can say that this Nash Equilibrium strategy is the best response to the Nash Equilibrium strategies of the other players. \newline
+
+\begin{large}\textbf{Application on Some Example Games}\end{large}\end{flushleft}
+
+\begin{flushleft}\textbf{Prisoners' Dilemma}\end{flushleft}
+Consider the following story:\\
+Two suspects are arrested and put into different cells before the trial. The district attorney, who is pretty sure that both of the suspects are guilty but lacks enough evidence, offers them the following deal: If both of them confess and implicate the other (labeled $C$), then each will be sentenced to, say, 3 years of prison time. If one confesses and the other does not (labeled $N$), then the “rat” goes free for his cooperation with the authorities and the non-confessor is sentenced to 4 years of prison time. Finally, if neither of them confesses, then both suspects get to serve 1 year. 
+
+Now, Let's analyse this case. The corresponding matrix will be- 
+\begin{center}\begin{tabular}{|c|c|c|} \hline
+1/2 & $C$ & $N$ \\ \hline
+$C$ & -3,-3 & 0,-4 \\ \hline
+$N$ & -4,0 & -1,-1 \\ \hline 
+\end{tabular}\end{center}
+
+\begin{itemize}
+\item First consider that the suspect 2 chooses to confess and implicate the other $ie$ chooses $C$. Then, the best response for suspect 1 would be to confess rather than not, as it has lesser prison time. 
+\item If we consider suspect 2 to not confess, then suspect 1 has the option to "rat" out 1 and walk free. We can consider similar cases for suspect 2.
+\end{itemize}
+We see that no matter what the other suspect does, it is in the best interest of each suspect to rat out the other as this is the best response in any situation. Hence, we can say that choosing $C$ is the \textit{strongly dominant strategy}. Hence, we can conclude that $CC$ is the \textit{pure strategy Nash Equilibrium} here.\newline
+
+Let's consider the \textbf{Coordination Game} described in \textbf{section 2.4}. Here's the matrix for it-
+
+		\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+		$1/2$ & Left & Right \\ \hline
+		Left &  1,1 & -1,-1 \\ \hline
+		Right & -1,-1 & 1,1 \\ \hline
+		\end{tabular}
+		\end{center}
+We can see that we have \textit{two Nash equilibria} here. If one of the drivers goes to the left, it's the best response to go to the left. And conversely, if the the other driver goes to the right, then the first driver is best off going to the right as well. And the others are not Nash equilibria.
+
+\subsection{Pareto Dominance and Optimality}
+
+Till now, we have been considering the whole game scenario as a participant in it. But there should be a proper approach from the point of view of an outside observer who has no obligation to any of the players. The observer might prefer a certain outcome as kind of a social good of the participants.\newline
+
+Sometimes one outcome $o$ is atleast as good for every agent as another outcome $o'$, and there is some agent who $strictly$ prefers $o$ to $o'$. In this case, it is reasonable to say that $o$ is better than $o'$. 
+\begin{center}We say that $o$ \textit{Pareto-dominates} $o'$\end{center}
+
+\begin{large}\textbf{Pareto optimality}\end{large}\newline\
+
+An outcome $o^*$ is \textbf{Pareto-optimal} if there is no other outcome that \textit{Pareto-dominates} it.
+\begin{flushleft}
+\textbf{Proposition 1:} It is possible for a game to have more than one Pareto-optimal outcome.\newline
+
+\textit{Proof:} A game might have exactly same payoff values that are also Pareto-dominant over others for different action combinations, hence none of them is Pareto-dominant over each other and both are Pareto-optimal.\newline
+
+\textbf{Proposition 2:} Every game has atleast one Pareto-optimal outcome.\newline
+
+\textit{Proof:} For some outcome to not be Pareto-optimal it has to be dominated by some other outcome. And if it is dominated by some outcome, then the dominant outcome would be considered for Pareto-optimality and so goes on the cycle. Hence, a game has to have a Pareto-optimal outcome.
+\end{flushleft}

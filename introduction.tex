@@ -7,16 +7,118 @@ In a game as simple as Rock, Paper, Scissors, when two people play their respect
 	\begin{itemize}
 	\item \textbf{Players:}\\
 	The strategic decison-makers in the context of the game. These can be as small as individuals and as large as governments or multi-national companies.
+	\item \textbf{Actions:}\\
+	These are the choices available to the player from which she has to choose.
+	\item \textbf{Payoff:}\\
+	Sounds like a reward, it acts as a motivating factor behind the actions of the players and the reason for their participation.
 	\item \textbf{Rational:}\\
 		An individual is considered \textit{rational} if she has well defined objectives (or preferences) over the set of possible outcomes and she implements the best available \textit{strategy} to pursue them. In reality, assumption of rationality might be an unrealistic one. These limitations is what gives birth to the concept of \textit{bounded rationality} which is an active area of research currently.
 	\item \textbf{Strategy:}\\
 	A proper set of action plans chosen by a player in a certain setting, whose outcome depends not only on her action, but on others' too.
 	\item \textbf{Rules:}\\
 	A set of statements that clarifies, demarcates and/or interprets the proceedings of a game.  
-	\item \textbf{Actions:}\\
-	These are the choices available to the player from which she has to choose.
-	\item \textbf{Payoff:}\\
-	Sounds like a reward, it acts as a motivating factor behind the actions of the players and the reason for their participation.
+	\item \textbf{Utility Function:}\\
+	It is a mathematical measure that tells how much a player likes or does not like a given situation. It describes not only their attitude towards a definitive event, but also describe the preferences towards a distribution of such outcomes.
 	\item \textbf{Common Knowledge:}\\
 	As we consider all players in the game to be \textit{rational}, everyone of the players knows about the model, everybody knows that everybody knows about the model, everybody knows that everybody knows that everybody knows it, and so on.
+	\item \textbf{Best Response:}\\
+	It is the best strategic response that a player makes according to others' strategies in order to achieve maximum payoff possible.
 	\end{itemize}
+	\subsection{Defining Games}
+	
+		There's basically two standard representations of a game:
+		\begin{enumerate}
+			\item \textsc{Normal Form} (or Matrix Form, Strategic form)
+			
+			\item \textsc{Extensive Form} (\textit{we will talk about this topic later})
+		\end{enumerate}
+		
+		\begin{large}\textbf{Normal Form}\end{large}\newline
+		
+		It lists what players receive as payoffs as a function of their actions. Actions in these games are considered to be 			simultaneous.
+		
+		\textbf{Key Ingredients:}
+			\begin{itemize}
+			\item {Players}: $N = \{1, \dots, n\}$ is a finite set of $n$, indexed by $i$
+			\item {Action Set} for Player $i =A_i$\\
+			$a = (a_1, \dots , a_n) \in A_1 \times \dots \times A_n$ is an action profile
+			\item{Utility function or Payoff Function} for player $i: u_i : A \mapsto \mathbb{R}$\\
+			$u = \{u_1, \dots , u_n\}$ is a profile of utility functions.
+			\end{itemize}
+\subsection{Few Examples }
+		\textbf{Two Player Game as a \textit{matrix}}:\newline
+		
+		The "row" player is considered Player 1 and "column" player as Player 2. 
+		Rows correspond to actions $a_1 \in A_1$ and columns to $a_2 \in A_2$.
+		We list the payoff values for both the players as a $tuple$ in the cells, the row player being first and then the column 		player.\newline
+		
+		So, as a basic example, we consider a simple Rock, Paper, Scissors game. In a matrix form, it would look like this:\\
+		\begin{center}
+		\begin{tabular}{|c|c|c|c|} \hline
+		$1/2$ & rock & paper & scissors\\ \hline
+		rock & 0,0 & 0,1 & 1,0 \\ \hline
+		paper & 1,0 & 0,0 & 0,1 \\ \hline
+		scissors & 0,1 & 1,0 & 0,0 \\ \hline
+		\end{tabular}
+		\end{center}
+		
+		\begin{itemize}
+		\item The above matrix, along with the actions and payoffs is called a $game$.
+		\item In this game, available actions are rock, paper and scissors
+		\item The payoff is the point you will score after each move is played, $eg:  u_1 (paper, scissors) = 0$
+		\item Here, the common knowledge is that everyone is aware of the moves and their respective outcomes. 
+		\end{itemize}
+		\textbf{A Large Collective Action Game} \newline
+		
+		If there are large number of players, we cannot draw up a table and find out the payoffs for each of them. Let's consider the following scenario-\newline
+		We consider a city of population of $10$ $million$ people. Some of them are unhappy about the government and organize a revolt on a sunny afternoon on a certain Friday.
+		\begin{itemize}
+		\item Players: $N = \{1, \dots , 10,000,000\}$	
+		\item Action Set for player $i$ $ A_i = \{Revolt, Abstain\}$
+		\item Utility function for player $i$
+			\begin{itemize}
+			\item $u_i(a) = 1$ if \#$\{j: a_j = Revolt\} \geq 2,000,000$
+			\item $u_i(a) = -1$ if \#$\{j: a_j = Revolt\} < 2,000,000$ and $a_i = Revolt$
+			\item $u_i(a) = 0$ if \#$\{j: a_j = Revolt\} < 2,000,000$ and $a_i = Abstain$
+			\end{itemize} 
+		
+		\item Any player $i$ has an option to $Revolt$ or $Abstain$ on the day of the revolution. 
+		\item A revolution would be considered successful if there are atleast $2 $$million$ people revolting that day
+		\item If the revolt is successful then each person gets a payoff value of $1$.
+		\item If the revolt is unsuccessful, and the player had participated in it, then there would be a capital punishment by the dictator and the payoff value for that individual would be $-1$
+		\item If the player did not participate in the unsuccessful revolt, then the payoff value would be $0$.
+		
+		\end{itemize}
+	\textbf{Games of Cooperation}\newline
+		
+		Players should not always have opposing interests to each other and might even cooperate for their best response.
+		We say that the players have \textit{exactly the same} interests if: $$\forall a \in A, \forall i,j, u_i(a) = u_j(a)$$ 
+		\textbf{Coordination Game}\newline
+		
+		Let's consider a situation where we want to know which side of the road we should drive on. Consider the following matrix:\\   
+		\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+		$1/2$ & Left & Right \\ \hline
+		Left &  1,1 & -1,-1 \\ \hline
+		Right & -1,-1 & 1,1 \\ \hline
+		\end{tabular}
+		\end{center}
+		Hence, we observe that if both the drivers going in the opposite direction choose the same side, then they can avoid a collision and hence have a payoff of 1.\newline
+		
+		\begin{flushleft}\textbf{Battle Of The Sexes}\end{flushleft}
+		
+		A game does not always have to be completely competitive or coordinative. The most interesting games are the ones that combine the elements of both.\newline
+		
+		Consider a couple who want to go to watch a movie. They have two options: Movie A or Movie B.
+		The Husband wants to watch A and the Wife, B. But most importantly, they want to go together or else no one's happy. Hence the following matrix:
+		\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+		Husband/Wife & Movie A & Movie B \\ \hline
+		Movie A &  2,1 & 0,0 \\ \hline
+		Movie B & 0,0 & 1,2 \\ \hline
+		\end{tabular}
+		\end{center}
+		Here, if they watch movie A, then the Husband gets to watch his favourite movie and also be together, hence a payoff of 2, and wife 1. Similar reasoning holds if they watch movie B. But, if they watch different movies, then both are unhappy and hence have a payoff of 0.
+		
+
+		
