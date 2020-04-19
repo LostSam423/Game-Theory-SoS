@@ -1,0 +1,72 @@
+\section{Mixed Strategies and Nash Equilibrium}
+
+\subsection{Mixed Strategy}
+\hspace{1cm}Consider a scenario, where there is a conflict between the Mafia and the Army. The Mafia wants to attack one of several trade routes randomly for loot, but would lose if the Army is guarding it. If the Army plays a fixed strategy to guard only certain routes (as we do in pure strategy equilibrium) then the Mafia will be able to understand the plan and attack the ones not being guarded at a particular time. Hence, the Army has to play mixed strategy to make it difficult for the Mafia to figure out a way to loot.\newline
+
+Let's reconsider the \textit{Matching Pennies} game in the previous section. It would be a pretty bad idea to play any deterministic strategy in this game. So, a basic approach would be to confuse the opponent by playing randomly. In this way, there is no sure approach and hence we have a \textit{positive probability} for each action being played.\\
+
+ So, we re-define a \textbf{strategy} $s_i$ for agent $i$ as any  probability distribution over the actions $A_i$-
+ \begin{itemize}
+ \item \textbf{pure strategy:} only one action is played with positive probability.
+ \item \textbf{mixed strategy:} more than one action is being played with positive probability
+ 	\begin{itemize}
+	\item These actions are called the \textbf{support} of the mixed strategy
+	\end{itemize}
+ \end{itemize}
+ 
+ If the set of all \textit{strategies} for $i$ be $S_i$, then the set of \textit{all strategy profiles }will be $S = S_1 \times \dots \times S_n$\newline
+ 
+\textbf{Payoff/Utility under Mixed strategies}\\
+
+If all the players follow mixed strategy profile $s \in S$, the payoff won't be as simple as reading it from the game matrix. Instead, we would use the idea of \textit{expected utility} as follows:
+	$$u_i(s) = \sum_{a \in A} u_i(a) Pr(a|s)$$
+	where,$$Pr(a|s) = \prod_{j \in N}s_j(a_j)$$
+	Here, $u_i(s)$ is the utility of a player $i$ who played the strategy profile $s$ and $Pr$ is the probability that we get to an action $a$ given we choose strategy profile $s$.
+
+\subsection{Best Response and Nash Equilibrium}
+
+Previously in \textbf{section 4}, we used actions to determine the best response and hence Nash Equilibrium. Now, we can generalise the definition to use strategies to determine the best response.\newline
+
+\begin{flushleft}\textbf{Best Response}:\\ \begin{center} $s_i^*\in BR(s_{-i})$ $iff$ $\forall s_i \in S_i, u_i(s_i^*, s_{-i}) \geq u_i(s_i, s_{-i})$\end{center}
+Hence, there we can be multiple best responses.\newline
+
+\textbf{Nash Equilibrium}
+$$s = \langle s_1, \dots , s_n\rangle \textit{ is a Nash Equilibrium iff } \forall i, s \in BR{s_{-i}}$$
+\end{flushleft}
+
+If we reconsider the \textit{Matching Pennies} game, we had no pure strategy Nash Equilibrium. But, if consider a probabilistic approach to the choice of Head or Tail, \textit{ie} a $0.5$ probability for both, then we have a mixed strategy Nash Equilibrium.
+
+\subsection{Computing Mixed Nash Equilibrium}
+A mixed strategy profile is a Nash Equilibrium if and only if the utility of the profile is same for both players and is greater than all other possible utilities for different actions.\newline
+\begin{flushleft}Let's consider the \textit{Battle Of The Sexes} game in section 2.4. 
+\end{flushleft}
+	\begin{center}
+	\begin{tabular}{|c|c|c|}\hline
+	Husband/Wife & Movie A & Movie B \\ \hline
+	Movie A &  2,1 & 0,0 \\ \hline
+	Movie B & 0,0 & 1,2 \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	Nash equilibrium is achieved if one player sets his probability such that the options for other player become indifferent, \textit{ie} any of the actions will give equal payoff to the second player. We can ensure that by solving a linear equation to find the corresponding probability. 
+
+Assume the Wife opts for Movie A with probability $p$ and B with probability $1-p$. Then,
+\begin{eqnarray}
+u_1(A, s^*_2) &=& 2 (p) + 0(1-p) = 2p\\
+u_1(B, s^*_2) &=& 0 (p) + 1(1-p)= 1-p\\
+u_1(B, s^*_2) &=& u_1(A, s^*_2) \\
+2p&=&1-p\\
+p &=& \frac{1}{3}
+\end{eqnarray}	
+Similarly, to make the options for wife indifferent, we have to find the probability $q$ with which Husband chooses the movie A
+\begin{eqnarray}
+u_2(A, s^*_1) &=& 1 (q) + 0(1-q) = 1q\\
+u_2(B, s^*_1) &=& 0 (q) + 2(1-q)= 2 - 2q\\
+u_2(B, s^*_1) &=& u_2(A, s^*_1) \\
+q&=&2-2q\\
+q &=& \frac{2}{3}
+\end{eqnarray}	
+
+Hence, the strategy profile$ \left( \left(\displaystyle{\frac{2}{3}},\displaystyle{\frac{2}{3}}\right),\left(\displaystyle{\frac{2}{3}},\displaystyle{\frac{2}{3}}\right)\right)$ results in Nash Equilibrium.
+\subsection{Theorem - Nash, 1950}
+$$\textit{Every finite game has a Nash Equilibrium}$$

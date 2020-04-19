@@ -3,13 +3,13 @@
 \subsection{Definition}
 It is a stable state of a game involving the interaction of different participants, in which no participant can gain by a unilateral change of strategy if the strategies of the others remain unchanged. \\
 
-\begin{flushleft}\textit{Nash Equilibrium} of a game $G$ in strategic form is defined as any outcome $(s^*_1, \dots , s^*_n)$ such that \end{flushleft}$$u_i(s^*_i, s^*_{-i}) \geq u_i(s_i, s^*_{-i})\hspace{0.3cm} \forall s_i \in S_i$$ holds for each player $i$. The set of all Nash equilibria of $G$ is denoted by $N(G)$.
+\begin{flushleft}\textit{Nash Equilibrium} of a game $G$ in strategic form is defined as any outcome $(a^*_1, \dots , a^*_n)$ such that \end{flushleft}$$u_i(a^*_i, a^*_{-i}) \geq u_i(a_i, a^*_{-i})\hspace{0.3cm} \forall a_i \in A_i$$ holds for each player $i$. The set of all Nash equilibria of $G$ is denoted by $N(G)$.
 
 \subsection{Best Response}
-We define the \textit{Best Response correspondence}\footnote{By definition, a \textit{correspondence} $f$ from $A$ to $B$ assigns to each $x \in A$ a \textit{subset} of $B$, and hence we write $f: A \rightrightarrows B$} of a player $i$ in a strategic form game as the correspondence$B_i : S_{-i} \rightrightarrows S_i$ given by $$B_i(s_{-i}) = \{s_i \in s_i: u_i(s_i, s_{-i}) \geq u_i(b_i, s_{-i})\hspace{0.2cm} \forall b_i \in S_i\} $$
+We define the \textit{Best Response correspondence}\footnote{By definition, a \textit{correspondence} $f$ from $A$ to $B$ assigns to each $x \in A$ a \textit{subset} of $B$, and hence we write $f: A \rightrightarrows B$} of a player $i$ in a strategic form game as the correspondence$B_i : A_{-i} \rightrightarrows A_i$ given by $$B_i(a_{-i}) = \{a_i \in a_i: u_i(a_i, a_{-i}) \geq u_i(b_i, a_{-i})\hspace{0.2cm} \forall b_i \in A_i\} $$
 
 \subsection{Pure Strategy Nash Equilibrium}
-Given a normal form game $\mathcal{T} = \langle \mathcal{N}, (S_i)_{i \in N}, (u_i)_{i \in N}\rangle$, the action profile $S^* = (s^*_1, \dots , s^*_n)$ is called a \textit{pure strategy Nash Equilibrium of $\mathcal{T}$ if} $\forall i, s^*_i$ belongs to the set of \textit{best response } of $s^*_{-i}$.
+Given a normal form game $\mathcal{T} = \langle \mathcal{N}, (A_i)_{i \in N}, (u_i)_{i \in N}\rangle$, the action profile $A^* = (a^*_1, \dots , a^*_n)$ is called a \textit{pure strategy Nash Equilibrium of $\mathcal{T}$ if} $\forall i, a^*_i$ belongs to the set of \textit{best response } of $a^*_{-i}$.
 
 \begin{flushleft}In words, we can say that this Nash Equilibrium strategy is the best response to the Nash Equilibrium strategies of the other players. \newline
 
@@ -62,3 +62,17 @@ An outcome $o^*$ is \textbf{Pareto-optimal} if there is no other outcome that \t
 
 \textit{Proof:} For some outcome to not be Pareto-optimal it has to be dominated by some other outcome. And if it is dominated by some outcome, then the dominant outcome would be considered for Pareto-optimality and so goes on the cycle. Hence, a game has to have a Pareto-optimal outcome.
 \end{flushleft}
+
+\textbf{Matching Pennies}\\
+
+Let's consider a new example game called \textit{Matching Pennies}.  . It is played between two players, Even and Odd. Each player has a penny and must secretly turn the penny to heads or tails. The players then reveal their choices simultaneously. If the pennies match (both heads or both tails), then Even keeps both pennies and hence his payoff is $+1$ and it is $-1$ for Odd. But if the pennies do not match, then the payoff is $+1$ for Odd and $-1$ for Even.\newline
+Here's the following matrix for it-
+	         \begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+		Even/Odd & Heads & Tails \\ \hline
+		Heads &  1,-1 & -1,1 \\ \hline
+		Tails & -1,1 & 1,-1 \\ \hline
+		\end{tabular}
+		\end{center}
+Here, we can see that in search of best response, we are lead into a cycle. Hence, there is no pure strategy Nash Equilibrium.
+Now, if we consider Pareto Dominance, no move dominates another move, hence \textit{by definition}, every strategy is a \textit{Pareto Optimal} strategy.
