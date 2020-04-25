@@ -1,0 +1,102 @@
+\section{Alternate Solution Concepts}
+
+\subsection{Strictly Dominated Strategies}
+This is a type of strategy which is never a best reply. Essentially, this is a startegy we can safely ignore.
+
+In terms of formal notation, A strategy $a_i \in A_i$ is strictly dominated by $a_i^* \in A_i$ if $$u_i(a_i, a_{-i}) < u_i(a_i^*, a_{-i}) \hspace{0.2cm} \forall a_{-i} \in A_{-i}$$
+
+\subsection{Iterated Removal Of Strictly Dominated Strategies}
+
+If in a game, we come across a strictly dominated strategy, we can reduce the possibility of playing that strategy to $0$. Essentially, we remove that strategy altogether. By applying such removal startegy, we can collapse the game to a much simpler one for us to analyze and apply the solution concepts.\\
+
+Let's consider a 3-by-3 normal form game given below:\\
+		\begin{center}
+		\begin{tabular}{|c|c|c|c|}\hline
+		$1/2$ & Left & Middle & Right\\ \hline
+		Top &  3,0 & 2,1 & 0,0 \\ \hline
+		Middle & 1,1 & 1,1 & 5,0 \\ \hline
+		Bottom & 0,1 & 4,2 & 0,1 \\ \hline
+		\end{tabular}
+		\end{center}
+		
+We can easily see that payoff for Player 2 is always less while playing Right strategy than the other two strategies. This points out that this strategy is \textit{strictly dominated} by the others and we can easily remove the column from our matrix as follows.
+
+		\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+		$1/2$ & Left & Middle \\ \hline
+		Top &  3,0 & 2,1  \\ \hline
+		Middle & 1,1 & 1,1 \\ \hline
+		Bottom & 0,1 & 4,2 \\ \hline
+		\end{tabular}
+		\end{center}
+		
+Now, we consider the Middle strategy for Player 1 and conclude that it is a  \textit{strictly dominated strategy} too and the matrix can be further simplified.
+
+		\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+		$1/2$ & Left & Middle \\ \hline
+		Top &  3,0 & 2,1   \\ \hline
+		Bottom & 0,1 & 4,2 \\ \hline
+		\end{tabular}
+		\end{center}
+		
+Again, Left strategy for Player 1 is now  \textit{strictly dominated strategy} and can be removed. 
+		\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+		$1/2$ & Middle \\ \hline
+		Top  & 2,1   \\ \hline
+		Bottom & 4,2 \\ \hline
+		\end{tabular}
+		\end{center}
+
+From the following \textit{Iterated Removal} we can conclude that the strategy profile \{Bottom, Middle\} is in Nash Equilibrium.
+
+\begin{flushleft}\textbf{Few Points}\end{flushleft}
+\begin{itemize}
+\item This strategy preserves \textit{Nash Equilibrium}.
+\item It can be used as a preprocessing step before computing an equilibrium.
+\item Games that are solvable by this technique are called \textbf{Dominance Solvable} games .
+\item Order of removal doesn't matter in case of multiple strictly dominated strategies .
+\end{itemize}
+
+\subsection{Weakly Dominated Strategies}
+A strategy is \textit{weakly dominated} by $a_i^* \in A_i$ if $$u_i(a_i, a_{-i}) \leq u_i(a_i^*, a_{-i}) \hspace{0.2cm} \textit{for all }  a_{-i} \in A_{-i}$$ and $$u_i(a_i, a_{-i}) < u_i(a_i^*, a_{-i}) \hspace{0.2cm} \textit{for some } a_{-i} \in A_{-i}$$.
+
+In this strategy, we can use iterated removal to remove the weakly dominated strategies but with precaution because:
+
+\begin{itemize}
+\item Such strategies can be best replies
+\item Order of removal can matter
+\item Atleast one equilibrium is preserved
+\end{itemize}
+
+\subsection{Maxmin Strategies}
+
+Player $i$'s \textit{maxmin strategy} is a strategy that maximizes $i$'s worst-case payoff, in the situation where all the players happen to play the strategies which cause the greatest harm to $i$.\\
+
+The \textit{maxmin value} of the game for player $i$ is the minimum payoff guaranteed by a maxmin strategy.\\
+\begin{flushleft}
+\textbf{Definition:}
+\end{flushleft}
+The \textbf{maxmin strategy} for player $i$ is $$arg \hspace{0.1cm}max_{s_i} min_{s_{-i}} u_i(s_1, s_2)$$ and the \textbf{maxmin value} for player is  $$max_{s_i} min_{s_{-i}} u_i(s_1, s_2)$$
+
+\subsection{Minmax Strategies}
+
+Player $i$'s \textit{minmax strategy} against player $-i$ in a 2-player game is a strategy that minimizes $-i$'s best-case payoff, and the \textit{minmax value} for $i$ against $-i$ is payoff.
+
+\begin{flushleft}
+\textbf{Definition:}
+\end{flushleft}
+In a 2-player game, the \textbf{minmax strategy} for player $i$ against player $-i$ is $$arg \hspace{0.1cm}min_{s_i} max_{s_{-i}} u_i(s_1, s_2)$$ and the \textbf{minmax value} for player $-i$ is  $$min_{s_i} max_{s_{-i}} u_i(s_1, s_2)$$
+
+\subsection{Minmax Theorem - \textit{von Neumann}, 1928}
+\textit{In any finite, two-player, zero sum game, in any Nash Equilibrium each player receives a payoff that is equal to both his maxmin and minmax value.}
+\begin{enumerate}
+\item Each player's maxmin value is equal to his minmax value.The maxmin value for player I is called the \textit{value of the game}
+\item For both players, set of minmax strategies coincides with the set of maxmin strategies.
+\item Any maxmin strategy profile (or, equivalently, minmax strategy profile) is a Nash Equilibrium. Furthermore, these are all the Nash equilibria. Consequently, all Nash equilibria have the same payoff vector.
+\end{enumerate}
+\subsection{Correlated Equilibrium}
+It is a randomized assignment of potentially correlated action recommendations to agents, such that everybody wants to follow the action recommendations $ie.$ nobody wants to deviate from it.\\
+
+Re-consider the BOS game in section 2.4. There's a possibility of both the husband and wife ending up at separate movies when we apply mixed-strategy Nash Equilibrium. Here, it would be preferable if there would be an assignment where one would get  the choice of watching their favourite movie and the other would tag along, rather than go their separate ways. Hence, correlated equilibria is helpful in this scenario.
