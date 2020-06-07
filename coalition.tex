@@ -1,0 +1,73 @@
+\section{Coalitional Games}
+In game theory, a coalitional game is a game with competition between groups of players ("coalitions") due to the possibility of external enforcement of cooperative behavior. These are opposed to non-cooperative games in which there is either no possibility to forge alliances or all agreements need to be self-enforcing through credible threats\\
+
+Transferable Utility Assumption:
+\begin{itemize}
+\item payoffs may be redistributed among a coalition's members
+\item satisfied whenever payoffs are disposed in a universal currency
+\item each coalition can be assigned a single value as its payoff
+\end{itemize}
+
+\subsection{Coalitional Game with Transferable Utility}
+A \textit{coalitional game with transferable utility} is a pair $(N, v)$, where 
+\begin{itemize}
+\item $N$ is a finite set of players indexed by $i$
+\item $v : 2^N \to \mathbb{R}$ associates with each coalition $S \subseteq N$ a real-valued payoff $v(S)$ that the coalition's members can distribute among themselves, assuming $v(i\ne 0) = 0$ 
+\end{itemize}
+
+This type of game theory helps us to answer which coalition is more likely to form and how should the coalition divide its payoff among its members
+
+\subsection{Superadditive Games}
+A game $G = (N, v)$ is \textit{superadditive} if for all $S, T\subset N$, if $S \cap T \ne 0$ , then $v(S\cup T)\geq v(S) + v(T)$\\
+\newline
+It is justified when coalitions can always work without interfering with one another.\\ The value of two coalitions will be no less than the sum of their individual values, which implies grand coalition has the highest payoff.\\
+We need to define the 'fair' way for a coalition to divide its payoff. To do this, we can identify axioms that express properties of a fair payoff division.
+
+\subsection{The Shapley Value and Axioms}
+\textit{Lloyd Shapley's} Idea: Members should receive payoffs or shares proportional to their marginal contributions.\\
+But this can be tricky to fix. Let's take an example. Suppose that everybody together in a society can generate 1, but if we're
+missing any member of society we get 0. Hence, we can write:\\
+\begin{itemize}
+\item $v(N) = 1, v(S)=0$ if $N\ne S$
+\item Then $v(N) - v(n/\{i\}) = 1$ for every $i$, everybody's marginal contribution is 1, everybody is essential to generating any value, but we cannot pay everybody equally.
+\end{itemize}
+\subsubsection{Shapley's Axioms}
+\begin{enumerate}
+\item \textbf{Symmetry}: For any $v$, if $i$ and $j$ are interchangeable, then $\psi_i(N, v) = \psi_j(N, v)$
+\item \textbf{Dummy Player}: For any $v$, if $i$ is a dummy player then $\psi_i(N, v)=0$
+\item \textbf{Additivity}: For any two $v_1$ and $v_2$, $\psi_i(N, v_1 + v_2) =\psi_i(N, v_1) + \psi_i(N, v_2)$ for each $i$, where the game $(N, v_1+v_2)$ is defined by $(v_1 + v_2)(S) = v_1(S) + v_2(S)$ for every coalition $S$
+\end{enumerate}
+\subsubsection{Shapley Value}
+Given a coalition $(N, v)$, the \textit{Shapley Value} divides payoffs among players according to:
+$$\phi_i(N, v) = \frac{1}{N!}\sum_{S \subseteq N / \{i\}} |S|!(|N| - |S| - 1)! [v(S\cup \{i\})- v(S)]$$ for each player $i$\\
+\textbf{Theorem}:\\
+
+Given a coalitional game $(N, v)$, there is a unique payoff division $x(v) = \phi(N, v)$ that divides the full payoff of grand coalition and that satisfies the \textit{Symmetry, Dummy player} and \textit{Additivity} axioms: the Shapley Value
+
+\subsection{The Core}
+Core is an alternative coalitional game theory concept to the Shapley Value. Shapley value told us about how to divide the coalition's value fairly among all of its members. Instead we have to consider whether the agents would be willing to form the grand coalition, as compared to forming smaller coalitions that might give all of their members greater value than they're able to achieve in the grand coalition.
+\subsubsection{The Voting Game: Example}
+A parliament is made up of four political parties, A, B, C and D, which have 45, 25, 15 and 15 representatives respectively. They are to vote on whether to pass a \$100 million spending bill and hoe much of this amount should be controlled by each of the parties. A majority vote, a minimum of 51, is required to pass any legislation, and if bill does not pass then every party gets nothing to spend.\\                                                                                                                                                                 
+Corresponding Shapley Value: $(50, 16.67, 16.67, 16.67)$\\        
+\newline                                                                      
+This leads to a thought if a sub-coalition can gain from it more. While A can't obtain more than 50 on its own, A and B have incentive to defect and divide 100 million between them.\\
+Under what conditions would the agents want to form a grand coalition. They would want to do so if and only if the payment profile is drawn from a set called the core.
+\subsubsection{Core: Definition}
+A payoff vector $x$ is in the core of a coalitional game $(N, v)$ iff $$\forall S \subseteq N, \sum_{i\in S} x_i \geq v(S)$$
+\textbf{Existence and Uniqueness}:\\
+Core need not be present always, ie. it can be empty, and the core is not unique, there can exist more than one type of distribution\\
+\textbf{Simple Game}: A game $G$ is \textit{simple} if for all $S \subset N, v(S) \in \{0, 1\}$\\
+\textbf{Veto Player}: A player $i$ is a \textit{veto player} if $v(N/ \{i\}) = 0$\\
+\newline
+\textbf{Theorem:}\\
+In a simple game the core is empty iff there is no veto player. If there are veto players, then the core consists of all payoff vectors in which the non-veto players receive 0.
+
+\subsubsection{Airport Game: Example}
+Several nearby cities need airport capacity, with different cities needing to accommodate aircrafts of different sizes. If a new regional airport is built the cities will have to share its cost, which will depend on the largest aircraft the runway can accommodate. Otherwise each city will have to build its own airport.\\
+This situation can be modeled as a coalitional game $(N, v)$, where $N$ is the set of cities, and $v(S)$ is the sum of costs of building runways for each city in $S$ minus the cost of the largest runway required by any city in $S$.\\
+\newline
+\textbf{Convex Game}: A game $G$ is \textit{convex} if for all $S, T \subset N,$  $ v(S\cup N) \geq v(S)+ v(T) - v(S \cap T)$
+\begin{itemize}
+\item Every convex game has a non-empty core
+\item In every convex game, the Shapley value is in the core
+\end{itemize}
